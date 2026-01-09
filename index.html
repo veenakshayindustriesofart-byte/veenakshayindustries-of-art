@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEENAKSHAY INDUSTRIES OF ART</title>
+  <style>
+    body {margin:0;font-family:Arial,sans-serif;background:#faf7f2;color:#333;}
+    header {background:linear-gradient(135deg,#6b3f1d,#c9a24d);color:white;padding:40px 20px;text-align:center;}
+    header h1 {margin:0;font-size:2.5rem;letter-spacing:2px;}
+    section {padding:40px 20px;max-width:1100px;margin:auto;}
+    h2 {border-bottom:2px solid #c9a24d;display:inline-block;padding-bottom:5px;}
+    .gallery {display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:20px;}
+    .gallery img {width:100%;height:200px;object-fit:cover;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.15);}
+    form {margin-top:20px;background:white;padding:20px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.1);}
+    input,textarea,button {width:100%;margin-top:10px;padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1rem;}
+    button {background:#6b3f1d;color:white;border:none;cursor:pointer;}
+    button:hover {background:#543016;}
+    footer {background:#333;color:#ddd;text-align:center;padding:15px;}
+    .admin-box {background:#fff3cd;padding:15px;border-radius:10px;margin-top:20px;}
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" style="max-width:140px;display:block;margin:0 auto 10px;">
+  <h1>VEENAKSHAY INDUSTRIES OF ART</h1>
+  <p>Creative Home Art • Wall Art • Custom Designs</p>
+  <div style="margin-top:10px;">
+    <a href="mailto:veenakshayindustriesofart@gmail.com" style="color:white;text-decoration:none;">Email</a>
+  </div>
+</header>
+
+<section>
+  <h2>Our Art Gallery</h2>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<section>
+  <h2>Book a Home Art Slot</h2>
+  <form action="https://formsubmit.co/veenakshayindustriesofart@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="New Home Art Booking Request">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="Name" placeholder="Your Name" required>
+    <input type="email" name="Email" placeholder="Your Email" required>
+    <input type="text" name="Address" placeholder="City / Address" required>
+    <input type="date" name="Preferred Date" required>
+    <textarea rows="4" name="Requirement" placeholder="Describe your requirement"></textarea>
+    <button type="submit">Book Slot</button>
+  </form>
+</section>
+
+<section>
+  <h2>Public Reviews</h2>
+  <form action="https://formsubmit.co/veenakshayindustriesofart@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="New Website Review">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="Name" placeholder="Your Name" required>
+    <textarea rows="3" name="Review" placeholder="Write your review" required></textarea>
+    <button type="submit">Submit Review</button>
+  </form>
+</section>
+
+<section>
+  <h2>Admin Panel</h2>
+  <div class="admin-box">
+    <input type="password" id="adminPass" placeholder="Admin Password">
+    <input type="file" id="imageUpload" disabled>
+    <button onclick="uploadImage()">Upload</button>
+  </div>
+</section>
+
+<footer>© 2026 VEENAKSHAY INDUSTRIES OF ART</footer>
+
+<script>
+const ADMIN_PASSWORD="veenakshay123";
+const pass=document.getElementById("adminPass");
+const upload=document.getElementById("imageUpload");
+const gallery=document.getElementById("gallery");
+pass.oninput=()=>upload.disabled=pass.value!==ADMIN_PASSWORD;
+function uploadImage(){
+  const f=upload.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{const i=document.createElement("img");i.src=e.target.result;gallery.appendChild(i);}
+  r.readAsDataURL(f); upload.value="";
+}
+</script>
+</body>
+</html>
